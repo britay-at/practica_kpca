@@ -2,6 +2,7 @@ import pandas as pd #importamos pandas
 import sklearn #biblioteca de aprendizaje automático
 import matplotlib.pyplot as plt #Librería especializada en la creación de gráficos
 from sklearn.decomposition import PCA #importamos algorimo PCA
+from sklearn.decomposition import KernelPCA #importamos algorimo KPCA
 from sklearn.decomposition import IncrementalPCA #importamos algorimo PCA
 from sklearn.linear_model import LogisticRegression #clasificación y análisis predictivo 
 from sklearn.preprocessing import StandardScaler #Normalizar los datos
@@ -51,3 +52,21 @@ dt_test = ipca.transform(X_test)
 logistic.fit(dt_train, y_train)
 #Calculamos nuestra exactitud de nuestra predicción
 print("SCORE IPCA: ", logistic.score(dt_test, y_test))
+
+kernel = ['linear','poly','rbf']
+#Aplicamos la función de kernel de tipo polinomial
+for k in kernel:
+    kpca = KernelPCA(n_components=3, kernel = k)
+#kpca = KernelPCA(n_components=4, kernel='poly' )
+#Vamos a ajustar los datos
+    kpca.fit(X_train)
+#Aplicamos el algoritmo a nuestros datos de prueba y de entrenamiento
+    dt_train = kpca.transform(X_train)
+    dt_test = kpca.transform(X_test)
+#Aplicamos la regresión logística un vez que reducimos su dimensionalidad
+    logistic = LogisticRegression(solver='lbfgs')
+#Entrenamos los datos
+    logistic.fit(dt_train, y_train)
+#Imprimimos los resultados
+    print("SCORE KPCA " + k + " : ", logistic.score(dt_test, y_test))
+    
