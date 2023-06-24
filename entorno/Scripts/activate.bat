@@ -1,4 +1,4 @@
-@set "VIRTUAL_ENV=C:\Users\Danny\Desktop\proyectomineria\entorno"
+@set "VIRTUAL_ENV=C:\Users\Brithany Sanchez\OneDrive\Escritorio\Proyecto Sensor\entorno"
 
 @if defined _OLD_VIRTUAL_PROMPT (
     @set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

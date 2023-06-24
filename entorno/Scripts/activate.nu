@@ -31,7 +31,7 @@ export-env {
     }
 
     let is_windows = ($nu.os-info.name | str downcase) == 'windows'
-    let virtual_env = 'C:\Users\Danny\Desktop\proyectomineria\entorno'
+    let virtual_env = 'C:\Users\Brithany Sanchez\OneDrive\Escritorio\Proyecto Sensor\entorno'
     let bin = 'Scripts'
     let path_sep = (char esep)
     let path_name = (if $is_windows {
